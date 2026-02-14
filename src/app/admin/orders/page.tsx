@@ -33,26 +33,25 @@ export default function OrdersPage() {
 
   return (
     <div className="space-y-4">
-      <h1 className="text-3xl font-bold">Orders</h1>
-      <div className="flex gap-2">
-        {["all", "pending", "shipped", "delivered", "returned"].map((s) => (
-          <button key={s} onClick={() => setFilter(s)} className={`rounded px-3 py-1 text-sm ${filter === s ? "bg-zinc-900 text-white" : "bg-zinc-100"}`} type="button">{s}</button>
+      <h1 className="text-3xl font-black">Orders</h1>
+      <div className="flex flex-wrap gap-2">
+        {["all", "pending", "shipped", "delivered", "returned", "paid"].map((s) => (
+          <button key={s} onClick={() => setFilter(s)} className={`rounded-xl px-3 py-1.5 text-sm font-semibold ${filter === s ? "bg-indigo-600 text-white" : "bg-zinc-100"}`} type="button">{s}</button>
         ))}
       </div>
+
       <div className="space-y-3">
         {filtered.map((o) => (
-          <div key={o.id} className="rounded-lg border p-3">
+          <div key={o.id} className="card p-4">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <p className="font-semibold">{o.id} � ?{o.totalAmount}</p>
-              <div className="flex items-center gap-2">
-                <select value={o.status} onChange={(e) => updateStatus(o.id, e.target.value)} className="rounded border p-1 text-sm">
-                  <option value="pending">Pending</option>
-                  <option value="shipped">Shipped</option>
-                  <option value="delivered">Delivered</option>
-                  <option value="returned">Returned</option>
-                  <option value="paid">Paid</option>
-                </select>
-              </div>
+              <select value={o.status} onChange={(e) => updateStatus(o.id, e.target.value)} className="input w-auto text-sm">
+                <option value="pending">Pending</option>
+                <option value="shipped">Shipped</option>
+                <option value="delivered">Delivered</option>
+                <option value="returned">Returned</option>
+                <option value="paid">Paid</option>
+              </select>
             </div>
             <p className="text-sm text-zinc-600">{o.email || "No email"}</p>
             <p className="mt-1 text-sm">Items: {o.items.map((i) => `${i.name} x${i.quantity}`).join(", ")}</p>

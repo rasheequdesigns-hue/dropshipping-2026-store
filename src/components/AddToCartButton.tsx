@@ -16,11 +16,7 @@ export function AddToCartButton({ product }: Props) {
   const addItem = useCartStore((s) => s.addItem);
 
   return (
-    <button
-      onClick={() => addItem(product)}
-      className="rounded-md bg-zinc-900 px-5 py-3 text-sm font-semibold text-white"
-      type="button"
-    >
+    <button onClick={() => addItem(product)} className="btn-primary" type="button">
       Add to Cart
     </button>
   );

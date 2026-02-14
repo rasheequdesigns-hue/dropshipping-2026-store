@@ -6,40 +6,30 @@ export default function Home() {
   const featured = products.slice(0, 3);
 
   return (
-    <div className="space-y-12">
-      <section className="rounded-2xl bg-zinc-900 px-6 py-14 text-white">
-        <p className="mb-2 text-sm uppercase tracking-[0.2em] text-zinc-300">Launch-ready storefront</p>
-        <h1 className="text-4xl font-bold md:text-5xl">Sell winning products with DropForge</h1>
-        <p className="mt-4 max-w-2xl text-zinc-200">
-          Custom Next.js ecommerce starter for dropshipping in 2026. Fast, scalable, and conversion-focused.
-        </p>
-        <div className="mt-6 flex gap-3">
-          <Link href="/shop" className="rounded-md bg-white px-5 py-3 font-medium text-zinc-900">
-            Start Shopping
-          </Link>
-          <Link href="/about" className="rounded-md border border-zinc-400 px-5 py-3 font-medium">
-            Learn More
-          </Link>
+    <div className="space-y-10">
+      <section className="card overflow-hidden bg-gradient-to-r from-indigo-700 to-violet-700 px-6 py-12 text-white">
+        <p className="mb-2 text-xs uppercase tracking-[0.22em] text-indigo-100">DropForge 2026</p>
+        <h1 className="text-4xl font-black md:text-5xl">A premium storefront for your dropshipping brand</h1>
+        <p className="mt-4 max-w-2xl text-indigo-100">Better conversion-focused UI, clean checkout flow, and full Admin v3 operations panel.</p>
+        <div className="mt-6 flex flex-wrap gap-3">
+          <Link href="/shop" className="rounded-xl bg-white px-5 py-3 font-semibold text-indigo-700">Explore Products</Link>
+          <Link href="/admin" className="rounded-xl border border-indigo-200 px-5 py-3 font-semibold text-white">Open Admin</Link>
         </div>
       </section>
 
-      <section>
+      <section className="card p-5">
         <div className="mb-5 flex items-center justify-between">
-          <h2 className="text-2xl font-bold">Featured products</h2>
-          <Link href="/shop" className="text-sm font-semibold">
-            View all →
-          </Link>
+          <h2 className="text-2xl font-black">Featured products</h2>
+          <Link href="/shop" className="font-semibold text-indigo-700">View all ?</Link>
         </div>
 
         {featured.length === 0 ? (
-          <p className="rounded-lg border border-zinc-200 bg-zinc-50 p-4 text-zinc-600">
-            No products added yet. Add products from your admin panel.
-          </p>
+          <div className="rounded-xl border border-dashed border-zinc-300 bg-zinc-50 p-6 text-zinc-600">
+            No products yet. Add your first product from <Link href="/admin/catalog" className="font-semibold text-indigo-700">Admin ? Catalog</Link>.
+          </div>
         ) : (
           <div className="grid gap-6 md:grid-cols-3">
-            {featured.map((p) => (
-              <ProductCard key={p.id} product={p} />
-            ))}
+            {featured.map((p) => <ProductCard key={p.id} product={p} />)}
           </div>
         )}
       </section>
