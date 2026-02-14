@@ -1,0 +1,35 @@
+{
+  "name": "dropshipping",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "devDependencies": {
+    "@prisma/client": "6.16.2",
+    "@tailwindcss/postcss": "^4.1.18",
+    "@types/node": "^20.19.33",
+    "@types/papaparse": "^5.5.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.2",
+    "eslint-config-next": "^16.1.6",
+    "next": "^16.1.6",
+    "prisma": "6.16.2",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@stripe/stripe-js": "^8.7.0",
+    "lightningcss": "^1.31.1",
+    "papaparse": "^5.5.3",
+    "stripe": "^20.3.1",
+    "zod": "^4.3.6",
+    "zustand": "^5.0.11"
+  }
+}
