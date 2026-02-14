@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { ADMIN_COOKIE } from "@/lib/auth/session";
+import { getAdminToken } from "@/lib/auth/token";
 
 const schema = z.object({ password: z.string().min(1) });
 
@@ -12,16 +13,14 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });
   }
 
-  if (!process.env.ADMIN_PANEL_TOKEN) {
-    return NextResponse.json({ error: "ADMIN_PANEL_TOKEN missing" }, { status: 500 });
-  }
+  const adminToken = getAdminToken();
 
-  if (parsed.data.password !== process.env.ADMIN_PANEL_TOKEN) {
+  if (parsed.data.password !== adminToken) {
     return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
   }
 
   const response = NextResponse.json({ ok: true });
-  response.cookies.set(ADMIN_COOKIE, process.env.ADMIN_PANEL_TOKEN, {
+  response.cookies.set(ADMIN_COOKIE, adminToken, {
     httpOnly: true,
     sameSite: "lax",
     secure: false,
